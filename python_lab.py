@@ -133,42 +133,27 @@ def is_prime(n):
         return False
     return all(n % i for i in range(3, int(math.sqrt(n)) + 1, 2))
 
-
-          
-          
-          
-def prime(n, i):
-    if (n % i) == 0:
-        print(False)
-        return
-    else:
-        print(True)
-        return
-
-
-def loopprime(n):
-    for i in range(2, n):
-        prime(n, i)
-        break
-
-
 def factorial(n):
+    import math
     """ 12: Return the factorial of n, an exact integer >= 0.
     If the result is small enough to fit in an int, return an int.
     Else return a long.
     >>> [factorial(n) for n in range(6)]
     [1, 1, 2, 6, 24, 120]
-    >>> [factorial(long(n)) for n in range(6)]
-    [1, 1L, 2L, 6L, 24L, 120L]
+    >>> [factorial(math.long(n)) for n in range(6)]
+    [1, 1, 2, 6, 24, 120]
     >>> factorial(30)
-    265252859812191058636308480000000L
+    265252859812191058636308480000000
     """
+
     if n == 0:
         return 1
     else:
-        return n * factorial(n-1)
+        return int(math.long(n)) * factorial(n-1)
 
 
+          
+          
 def to_roman(num):
     """ 13: Convert number integer to Roman numeral
         >>> to_roman(598)
