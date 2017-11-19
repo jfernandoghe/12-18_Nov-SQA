@@ -113,17 +113,16 @@ def contar_vocales_2(x):
     else:
         return 0
           
-          
-
-
-def square(list):
+def square(lists):
     """ 10: Calculate the square of the numbers in a list
     >>> l = [0, 1, 2, 3]
     >>> square(l)
     [0, 1, 4, 9]
     """
-    print([i ** 2 for i in list])
+    print(list(map(lambda x: x**2, lists)))
 
+          
+          
 
 def is_prime(n):
     """ 11:  Return if n is prime.
