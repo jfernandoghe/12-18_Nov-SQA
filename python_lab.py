@@ -33,14 +33,14 @@ def all_the_args(*args, **kwargs):
 
 
 def may_20(*tup):
-    """ 3: Definir una tupla con 10 números. Imprimir la
-        cantidad de números superiores a 20.
+    """ 3: Definir una tupla con 10 números.
+    Imprimir la cantidad de números superiores a 20.
     >>> may_20(10, 16, 22, 26, 27, 30)
     22, 26, 27, 30
     """
     lists = []
     for x in tup:
-        lists.append(may_20_1(x))
+        lists.append(may_20_2(x))
     y = str(list(filter(None, lists)))
     print(y[1:-1])
 
