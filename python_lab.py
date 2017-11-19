@@ -50,14 +50,14 @@ def may_20_2(x):
 
 
 def word_filter(list_of_words, n):
-    """ 4: Filtra las palabras que contienen más de n caracteres
-    >>> word_filter(['hello', 'bye', 'computer', 'software', 'python'],5)
+    """ 4: Filtra las palabras que contienen más de n caracteres.
+    >>> word_filter(['hello','bye', 'computer', 'software', 'python'], 5)
     ['computer', 'software', 'python']
     """
-    lista = []
+    lists = []
     for item in list_of_words:
-        prueba(item, n, lista)
-    print(lista)
+        word_filter_2(item, lists, n)
+    print(lists)
 
 
 def prueba(x, n, lista):
