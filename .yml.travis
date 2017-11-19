@@ -1,13 +1,16 @@
+
 language: python
 python:
-  - "2.7"
-
+  - "3.5"
+# command to install dependencies
 install:
   - pip install flake8
-  - pip install autopep8
-  - sudo apt install pep8
+  #- pip install autopep8
+
+# command to run tests
 script:
-  - flake8 --max-complexity=2 python_lab.py
-  - python python_lab.py -m coverage --with-coverage --cover-min-percentage=99
-  - pep8 python_lab.py
-  - python -m doctest python_lab_2.py  
+  - flake8 python_lab_2.py
+  - python3 -m doctest python_lab_2.py
+  - flake8 --max-complexity=2
+
+#- autopep8 python_lab_2.py
