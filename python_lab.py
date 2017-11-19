@@ -68,20 +68,19 @@ def string_length(list):
     """
     print(len(list)
           
-          
-
-
 def is_vocal(x):
     """ 6: Determines if it is vocal
     >>> is_vocal('a')
     True
-    >>> is_vocal('b')
+    >>> is_vocal('c')
     False
     """
-    if x in ('a', 'e', 'i', 'o', 'u'):
+    if x == "a" or x == "e" or x == "i" or x == "o" or x == "u":
         print(True)
     else:
         print(False)
+          
+          
 
 
 def is_leap_year(year):
