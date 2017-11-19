@@ -31,7 +31,6 @@ def all_the_args(*args, **kwargs):
         lists.append(temp)
     print(lists)
 
-
 def may_20(*tup):
     """ 3: Definir una tupla con 10 números.
     Imprimir la cantidad de números superiores a 20.
@@ -48,7 +47,6 @@ def may_20_2(x):
     if x > 20:
         return x
 
-
 def word_filter(list_of_words, n):
     """ 4: Filtra las palabras que contienen más de n caracteres.
     >>> word_filter(['hello','bye', 'computer', 'software', 'python'], 5)
@@ -59,10 +57,9 @@ def word_filter(list_of_words, n):
         word_filter_2(item, lists, n)
     print(lists)
 
-
-def prueba(x, n, lista):
-    if len(x) > n:
-            lista.append(x)
+def word_filter_2(item, lists, n):
+    if len(item) > n:
+        lists.append(item)
 
 
 def string_length(list):
