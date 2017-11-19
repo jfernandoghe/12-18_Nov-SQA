@@ -61,13 +61,14 @@ def word_filter_2(item, lists, n):
     if len(item) > n:
         lists.append(item)
 
-
 def string_length(list):
     """ 5: imprime el largo de una cadena de caracteres
     >>> string_length("popularity")
     10
     """
-    print len(list)
+    print(len(list)
+          
+          
 
 
 def is_vocal(x):
