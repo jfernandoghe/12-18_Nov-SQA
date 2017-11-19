@@ -90,17 +90,16 @@ def is_leap_year(year):
     else:
         print(False)
           
-          
-
-
 def has_uppercase(word):
     """ 8: Evaluate if a word has uppercase letters
-    >>> has_uppercase('MayuSculA')
+    >>> has_uppercase("MayuSculA")
     3
     """
-    print(sum(1 for c in word if c.isupper()))
+    print(sum(1 for i in word if i.isupper()))
 
 
+          
+          
 def contar_vocales(cadena):
     """ 9: Return number of vocales in a word.
     >>> contar_vocales('murcielago')
