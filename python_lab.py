@@ -149,15 +149,12 @@ def factorial(n):
     if n == 0:
         return 1
     else:
-        return int(math.long(n)) * factorial(n-1)
-
-
+        return int(math.long(n)) * factorial(n-1)         
           
-          
-def to_roman(num):
+def to_roman(n):
     """ 13: Convert number integer to Roman numeral
-        >>> to_roman(598)
-        ['DXCVIII']
+    >>> to_roman(598)
+    '[DXCVIII]'
     """
     val = (1000, 900,  500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1)
     syb = ('M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX',
@@ -165,28 +162,30 @@ def to_roman(num):
     roman_num = ""
     list = []
     for i in range(len(val)):
-        count = int(num / val[i])
+        count = int(n / val[i])
         roman_num += syb[i] * count
-        num -= val[i] * count
+        n -= val[i] * count
     list.append(roman_num)
-    return list
-
-
+    return str(list).replace("'", "")           
+         
 def rima(word1, word2):
-    """ 14: Indica si dos palabrar riman. Si coinciden
-        las 3 ultimas letras rima,
-        si ncoinciden solo 2 rima un poco, si coincide solo 1 no rima.
+    """ 14: Indica si dos palabrar riman. Si coinciden las 3 ultimas letras rima,
+    si ncoinciden solo 2 rima un poco, si coincide solo 1 no rima.
     >>> rima('flor', 'coliflor')
     rima
     >>> rima('amar', 'plantar')
-    rima un poco.
+    rima un poco
     >>> rima('azucar', 'barrer')
     no rima
     """
     if word1[len(word1)-1] == word2[len(word2)-1]:
         rima3(word1, word2)
     else:
-        print('no rima')
+        print('no rima'))
+
+
+
+
 
 
 def rima3(word1, word2):
