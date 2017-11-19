@@ -107,6 +107,12 @@ def contar_vocales(cadena):
         suma += contar_vocales_2(x)
     print(suma)
           
+def contar_vocales_2(x):
+    if x == "a" or x == "e" or x == "i" or x == "o" or x == "u":
+        return 1
+    else:
+        return 0
+          
           
 
 
