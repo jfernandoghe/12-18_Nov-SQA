@@ -95,17 +95,19 @@ def has_uppercase(word):
     >>> has_uppercase("MayuSculA")
     3
     """
-    print(sum(1 for i in word if i.isupper()))
-
-
-          
+    print(sum(1 for i in word if i.isupper()))       
           
 def contar_vocales(cadena):
     """ 9: Return number of vocales in a word.
     >>> contar_vocales('murcielago')
     5
     """
-    print(sum(1 for c in cadena if c in ('a', 'e', 'i', 'o', 'u')))
+    suma = 0
+    for x in cadena:
+        suma += contar_vocales_2(x)
+    print(suma)
+          
+          
 
 
 def square(list):
