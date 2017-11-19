@@ -44,8 +44,7 @@ def may_20(*tup):
     y = str(list(filter(None, lists)))
     print(y[1:-1])
 
-
-def may_20_1(x):
+def may_20_2(x):
     if x > 20:
         return x
 
