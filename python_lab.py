@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*- Repaso interactivo de python
-
+# -*- coding: utf-8 -*-
 def lower_up(lower, upper):
     """ 1: Returns a list of numbers from the lower number to the upper number:
-    >>> lower_up(5,15)
+    >>> lower_up(5, 15)
     5
     6
     7
@@ -14,10 +13,9 @@ def lower_up(lower, upper):
     13
     14
     15
-        """
+    """
     for x in range(lower, upper+1):
         print(x)
-
 
 def all_the_args(*args, **kwargs):
     """ 2: Return an array. Use * to expand positional args and use **
