@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*- Repaso interactivo de python
 
-
 def lower_up(lower, upper):
     """ 1: Returns a list of numbers from the lower number to the upper number:
     >>> lower_up(5,15)
