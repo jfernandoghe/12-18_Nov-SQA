@@ -16,17 +16,20 @@ def lower_up(lower, upper):
     """
     for x in range(lower, upper+1):
         print(x)
-
+        
 def all_the_args(*args, **kwargs):
-    """ 2: Return an array. Use * to expand positional args and use **
-    to expand keyword args
-
+    """ 2: Return an array. Use * to expand positional
+    args and use ** to expand keyword args
     >>> all_the_args(1, 2, a=3, b=4)
     (1, 2)
-    {"a": 3, "b": 4}
+    [['a', 3], ['b', 4]]
     """
+    lists = []
     print(args)
-    print(str(kwargs).replace('\'', '"'))
+    for key, value in sorted(kwargs.items()):
+        temp = [key, value]
+        lists.append(temp)
+    print(lists)
 
 
 def may_20(*tup):
