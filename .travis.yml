@@ -5,6 +5,8 @@ python:
 install:
   - pip install flake8
   #- pip install autopep8
+  - sudo apt-get install python3-setuptools
+  - sudo easy_install3 pip
   - pip3 install git+git://github.com/python/mypy.git
 
 
