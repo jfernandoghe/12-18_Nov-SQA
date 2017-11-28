@@ -1,11 +1,8 @@
-# -*- coding: utf-8 -*-
 from typing import List
 from typing import Tuple
 from math import sqrt
 from contracts import contract
-from itertools import count, islice
-import calendar
-
+# -*- coding: utf-8 -*-
 """ Repaso interactivo de python
 """
 
@@ -25,9 +22,9 @@ def lower_up(lower: int, upper: int) -> None:
     13
     14
     15
-    """
-    for lower in range(lower, upper + 1):
-        print(lower)
+        """
+    for x in range(lower, upper+1):
+        print(x)
 
 
 @contract(args='tuple[N],N>0', kwargs='dict(str: (int))', returns=None)
@@ -56,34 +53,24 @@ def may_20(tup: Tuple[int]) -> None:
     print(superiores)
 
 
-@contract(cadenaTMP='str', cadena='int,>0', returns='str')
-def compara_20(cadenaTMP: str, cadena: int) -> str:
+@contract(cad_temp='str', cadena='int,>0', returns='str')
+def compara_20(cad_temp: str, cadena: int) -> str:
     """ Comparamos si es mayor a 20
     """
     if cadena > 20:
-        cadenaTMP = concatena_20(cadenaTMP, cadena)
-    return cadenaTMP
+        cad_temp = concatena(cad_temp, cadena)
+    return cad_temp
 
 
-@contract(word='str', returns=None)
-def has_uppercase(word: str) -> None:
-    """ 8: Evaluate if a word has uppercase letters
-    >>> has_uppercase('MayuSculA')
-    3
-    """
-    u = [x for x in word if x.isupper()]
-    print(len(u))
-
-
-@contract(cadenaTMP='str', cadena='int,>0', returns='str')
-def concatena_20(cadenaTMP: str, cadena: int) -> str:
+@contract(cad_temp='str', cadena='int,>0', returns='str')
+def concatena(cad_temp: str, cadena: int) -> str:
     """ Concatenamos una cadena si esta o no vacia.
     """
-    if cadenaTMP == "":
-        cadenaTMP = str(cadena)
+    if cad_temp == "":
+        cad_temp = str(cadena)
     else:
-        cadenaTMP = cadenaTMP + ", " + str(cadena)
-    return cadenaTMP
+        cad_temp = cad_temp + ", " + str(cadena)
+    return cad_temp
 
 
 @contract(list_='list(str)', n='int,>0', returns='list(str)')
@@ -113,55 +100,73 @@ def word_accepted(list_: List[str], n: int, a: int, i: int) -> int:
     return a
 
 
-@contract(list='str', returns='int')
-def string_length(list: str) -> int:
+@contract(list='str', returns='None')
+def string_length(list: List[str]) -> None:
     """ 5: imprime el largo de una cadena de caracteres
+
     >>> string_length("popularity")
     10
     """
-    return len(list)
+    print(len(list))
 
 
-@contract(x='str', returns='bool')
-def is_vocal(x: str) -> bool:
+@contract(x='str', returns='None')
+def is_vocal(x: str) -> None:
     """ 6: Determines if it is vocal
+
     >>> is_vocal('a')
     True
-    >>> is_vocal('b')
+    >>> is_vocal('c')
     False
     """
-    if x == 'a' or x == 'e' or x == 'i' or x == 'o' or x == 'u':
-        return True
+    if x == "a" or x == "e" or x == "i" or x == "o" or x == "u":
+        print(True)
     else:
-        return False
+        print(False)
 
 
 @contract(year='int', returns=None)
-def is_leap_year(year: int) -> None:
+def is_leap_year(year: int)-> None:
     """ 7: Determines if a year is a leap year.
+
     >>> is_leap_year(2016)
     True
     """
-    print(calendar.isleap(year))
+    if year % 400 == 0 or year % 4 == 0 and year % 100 != 0:
+        print(True)
+    else:
+        print(False)
+
+
+@contract(word='str', returns='int')
+def has_uppercase(word: str) -> int:
+    """ 8: Evaluate if a word has uppercase letters
+
+    >>> has_uppercase("MayuSculA")
+    3
+    """
+    return sum(1 for i in word if i.isupper())
 
 
 @contract(cadena='str', returns='int')
 def contar_vocales(cadena: str) -> int:
     """ 9: Return number of vocales in a word.
+
     >>> contar_vocales('murcielago')
     5
     """
-    count = 0
-    for i in cadena.strip():
-        count = separa_vocal(i) + count
-    return count
+    suma = 0
+    for x in cadena:
+        suma += contar_vocales_2(x)
+
+    return suma
 
 
-@contract(i='str', returns='int')
-def separa_vocal(i: str) -> int:
-    if is_vocal(i):
+def contar_vocales_2(x: str)-> int:
+    if x == "a" or x == "e" or x == "i" or x == "o" or x == "u":
         return 1
-    return 0
+    else:
+        return 0
 
 
 @contract(list='list(int)', returns=None)
@@ -179,14 +184,17 @@ def square(list: List[int]) -> None:
 
 
 @contract(n='int', returns='bool')
-def is_prime(n: int) -> bool:
+def is_prime(n: int)-> bool:
     """ 11:  Return if n is prime.
+
     >>> is_prime(5)
     True
     >>> is_prime(6)
     False
     """
-    return n > 1 and all(n % i for i in islice(count(2), int(sqrt(n)-1)))
+    if n % 2 == 0 and n > 2:
+        return False
+    return all(n % i for i in range(3, int(sqrt(n)) + 1, 2))
 
 
 @contract(n='int', returns='int')
@@ -201,17 +209,19 @@ def factorial(n: int) -> int:
     >>> factorial(30)
     265252859812191058636308480000000
     """
+
     if n == 0:
         return 1
     else:
-        return int(n * factorial(n-1))
+        return n * factorial(n-1)
 
 
-@contract(n='int', returns='list(str)')
-def to_roman(n: int) -> List[str]:
+@contract(n='int', returns='str')
+def to_roman(n: int)-> str:
     """ 13: Convert number integer to Roman numeral
+
     >>> to_roman(598)
-    ['DXCVIII']
+    '[DXCVIII]'
     """
     val = (1000, 900,  500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1)
     syb = ('M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX',
@@ -223,13 +233,14 @@ def to_roman(n: int) -> List[str]:
         roman_num += syb[i] * count
         n -= val[i] * count
     list.append(roman_num)
-    return list
+    return str(list).replace("'", "")
 
 
 @contract(word1='str', word2='str', returns=None)
 def rima(word1: str, word2: str) -> None:
     """ 14: Indica si dos palabrar riman. Si coinciden las 3 ultimas letras rima,
     si ncoinciden solo 2 rima un poco, si coincide solo 1 no rima.
+
     >>> rima('flor', 'coliflor')
     rima
     >>> rima('amar', 'plantar')
@@ -237,35 +248,34 @@ def rima(word1: str, word2: str) -> None:
     >>> rima('azucar', 'barrer')
     no rima
     """
-    x = ""
-    x = rima_comparation(word1, word2, 2)
-    if x == "rima un poco":
-        x = rima_comparation2(word1, word2, 3)
-    print(x)
+    if word1[len(word1)-1] == word2[len(word2)-1]:
+        rima3(word1, word2)
+    else:
+        print('no rima')
 
 
-@contract(word1='str', word2='str', n='int', returns='str')
-def rima_comparation(word1: str, word2: str, n: int) -> str:
-    if word1[len(word1)-n:len(word1)] == word2[len(word2)-n:len(word2)]:
-        return "rima un poco"
-    return "no rima"
+def rima3(word1: str, word2: str) -> None:
+    if word1[len(word1)-2] == word2[len(word2)-2]:
+        rima2(word1, word2)
+    else:
+        print('no rima')
 
 
-@contract(word1='str', word2='str', n='int', returns='str')
-def rima_comparation2(word1: str, word2: str, n: int) -> str:
-    if word1[len(word1)-n:len(word1)] == word2[len(word2)-n:len(word2)]:
-        return "rima"
-    return "rima un poco"
+def rima2(word1: str, word2: str) -> None:
+    if word1[len(word1)-3] == word2[len(word2)-3]:
+        print('rima')
+    else:
+        print('rima un poco')
 
 
-@contract(pesos='float', interes='float', anios='float', returns=None)
-def capital(pesos: float, interes: float, anios: float) -> None:
+@contract(pesos='int', interes='float', anios='int', returns=None)
+def capital(pesos: int, interes: float, anios: int) -> None:
     """ 15: Pide una cantidad de pesos, una tasa de interés y un numero de años.
-    Muestra en cuanto se habrá convertido el
-    capital inicial transcurridos esos años si cada
-    año se aplica la tasa de interés introducida.
-    >>> capital(10000.00, 4.50, 20.00)
+    Muestra en cuanto se habrá convertido el capital inicial transcurridos esos
+    años si cada año se aplica la tasa de interés introducida.
+
+    >>> capital(10000, 4.5, 20)
     24117.14
     """
-    total = pesos*(1 + interes/100)**anios
-    print("%.2f" % total)
+    resultado = pesos*(1 + interes/100) ** anios
+    print(round(resultado, 2))
